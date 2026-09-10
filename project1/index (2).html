@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel — Operations Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="shell" id="shell">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <span class="sidebar__mark" aria-hidden="true">▣</span>
+      <span class="sidebar__wordmark">Panel</span>
+    </div>
+
+    <nav class="sidebar__nav" aria-label="Primary">
+      <div class="sidebar__group-label">Monitor</div>
+      <a class="sidebar__link is-active" href="#overview">
+        <span class="sidebar__icon" aria-hidden="true">◆</span>
+        <span class="sidebar__text">Overview</span>
+      </a>
+      <a class="sidebar__link" href="#transactions">
+        <span class="sidebar__icon" aria-hidden="true">≡</span>
+        <span class="sidebar__text">Transactions</span>
+      </a>
+      <a class="sidebar__link" href="#audience">
+        <span class="sidebar__icon" aria-hidden="true">◈</span>
+        <span class="sidebar__text">Audience</span>
+      </a>
+      <a class="sidebar__link" href="#infrastructure">
+        <span class="sidebar__icon" aria-hidden="true">▤</span>
+        <span class="sidebar__text">Infrastructure</span>
+      </a>
+
+      <div class="sidebar__group-label">Manage</div>
+      <a class="sidebar__link" href="#billing">
+        <span class="sidebar__icon" aria-hidden="true">◇</span>
+        <span class="sidebar__text">Billing</span>
+      </a>
+      <a class="sidebar__link" href="#access">
+        <span class="sidebar__icon" aria-hidden="true">▥</span>
+        <span class="sidebar__text">Access control</span>
+      </a>
+      <a class="sidebar__link" href="#settings">
+        <span class="sidebar__icon" aria-hidden="true">⚙</span>
+        <span class="sidebar__text">Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar__footer">
+      <div class="sidebar__status">
+        <span class="dot dot--good" aria-hidden="true"></span>
+        <span class="sidebar__text">All systems normal</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== TOP BAR ===================== -->
+  <header class="topbar">
+    <button class="topbar__collapse" id="collapseBtn" type="button" aria-label="Collapse sidebar" aria-expanded="true" aria-controls="sidebar">
+      <span aria-hidden="true">☰</span>
+    </button>
+
+    <div class="topbar__search">
+      <label class="visually-hidden" for="globalSearch">Search</label>
+      <input id="globalSearch" type="search" placeholder="Search transactions, users, logs…">
+      <kbd class="topbar__kbd">⌘K</kbd>
+    </div>
+
+    <div class="topbar__actions">
+      <button class="topbar__iconbtn" type="button" aria-label="Notifications">
+        <span aria-hidden="true">🔔</span>
+        <span class="topbar__badge">3</span>
+      </button>
+      <div class="topbar__divider" aria-hidden="true"></div>
+      <div class="topbar__user">
+        <span class="topbar__avatar" aria-hidden="true">RM</span>
+        <span class="topbar__username">R. Mehta</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== MAIN WORKSPACE ===================== -->
+  <main class="main" id="overview">
+    <div class="main__header">
+      <div>
+        <h1 class="main__title">Overview</h1>
+        <p class="main__subtitle">Thu, 10 Sep 2026 · last refreshed 2 minutes ago</p>
+      </div>
+      <div class="main__header-actions">
+        <select class="range-select" aria-label="Date range">
+          <option>Last 24 hours</option>
+          <option selected>Last 7 days</option>
+          <option>Last 30 days</option>
+        </select>
+        <button class="btn btn--primary" type="button">Export report</button>
+      </div>
+    </div>
+
+    <!-- Metrics grid -->
+    <section class="metrics" aria-label="Key metrics">
+
+      <article class="metric-card">
+        <div class="metric-card__top">
+          <span class="metric-card__label">Total revenue</span>
+          <span class="trend trend--up">▲ 4.2%</span>
+        </div>
+        <div class="metric-card__value">$482,910</div>
+        <div class="metric-card__foot">vs $463,420 prior period</div>
+      </article>
+
+      <article class="metric-card">
+        <div class="metric-card__top">
+          <span class="metric-card__label">Active users</span>
+          <span class="trend trend--up">▲ 1.8%</span>
+        </div>
+        <div class="metric-card__value">18,204</div>
+        <div class="metric-card__foot">2,014 new this week</div>
+      </article>
+
+      <article class="metric-card">
+        <div class="metric-card__top">
+          <span class="metric-card__label">Server health</span>
+          <span class="trend trend--flat">● stable</span>
+        </div>
+        <div class="metric-card__value">99.97<span class="metric-card__unit">%</span></div>
+        <div class="metric-card__foot">uptime, rolling 30 days</div>
+      </article>
+
+      <article class="metric-card">
+        <div class="metric-card__top">
+          <span class="metric-card__label">Avg. response time</span>
+          <span class="trend trend--down">▼ 12ms</span>
+        </div>
+        <div class="metric-card__value">184<span class="metric-card__unit">ms</span></div>
+        <div class="metric-card__foot">p95 across all regions</div>
+      </article>
+
+      <article class="metric-card">
+        <div class="metric-card__top">
+          <span class="metric-card__label">Churn rate</span>
+          <span class="trend trend--bad">▲ 0.3%</span>
+        </div>
+        <div class="metric-card__value">2.1<span class="metric-card__unit">%</span></div>
+        <div class="metric-card__foot">flagged for review</div>
+      </article>
+
+      <article class="metric-card">
+        <div class="metric-card__top">
+          <span class="metric-card__label">Open support tickets</span>
+          <span class="trend trend--flat">● no change</span>
+        </div>
+        <div class="metric-card__value">37</div>
+        <div class="metric-card__foot">avg. resolution 6.4h</div>
+      </article>
+
+    </section>
+
+    <!-- Transactions table -->
+    <section class="panel" id="transactions" aria-labelledby="txnHeading">
+      <div class="panel__head">
+        <h2 class="panel__title" id="txnHeading">Recent transactions</h2>
+        <a class="panel__link" href="#">View all</a>
+      </div>
+
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th scope="col">Transaction ID</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Date</th>
+              <th scope="col" class="is-numeric">Amount</th>
+              <th scope="col">Method</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono">TXN-88213</td>
+              <td>Aarav Sharma</td>
+              <td class="mono">10 Sep 2026</td>
+              <td class="mono is-numeric">$1,240.00</td>
+              <td>UPI</td>
+              <td><span class="badge badge--completed">Completed</span></td>
+            </tr>
+            <tr>
+              <td class="mono">TXN-88212</td>
+              <td>Meera Iyer</td>
+              <td class="mono">10 Sep 2026</td>
+              <td class="mono is-numeric">$860.50</td>
+              <td>Card</td>
+              <td><span class="badge badge--pending">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="mono">TXN-88211</td>
+              <td>Kabir Nair</td>
+              <td class="mono">09 Sep 2026</td>
+              <td class="mono is-numeric">$4,120.00</td>
+              <td>Wire transfer</td>
+              <td><span class="badge badge--completed">Completed</span></td>
+            </tr>
+            <tr>
+              <td class="mono">TXN-88210</td>
+              <td>Devika Rao</td>
+              <td class="mono">09 Sep 2026</td>
+              <td class="mono is-numeric">$212.99</td>
+              <td>Card</td>
+              <td><span class="badge badge--failed">Failed</span></td>
+            </tr>
+            <tr>
+              <td class="mono">TXN-88209</td>
+              <td>Sana Sheikh</td>
+              <td class="mono">08 Sep 2026</td>
+              <td class="mono is-numeric">$75.00</td>
+              <td>UPI</td>
+              <td><span class="badge badge--completed">Completed</span></td>
+            </tr>
+            <tr>
+              <td class="mono">TXN-88208</td>
+              <td>Vikram Joshi</td>
+              <td class="mono">08 Sep 2026</td>
+              <td class="mono is-numeric">$3,050.75</td>
+              <td>Wire transfer</td>
+              <td><span class="badge badge--pending">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="mono">TXN-88207</td>
+              <td>Priya Desai</td>
+              <td class="mono">07 Sep 2026</td>
+              <td class="mono is-numeric">$598.20</td>
+              <td>Card</td>
+              <td><span class="badge badge--completed">Completed</span></td>
+            </tr>
+            <tr>
+              <td class="mono">TXN-88206</td>
+              <td>Arjun Malhotra</td>
+              <td class="mono">07 Sep 2026</td>
+              <td class="mono is-numeric">$1,999.00</td>
+              <td>UPI</td>
+              <td><span class="badge badge--failed">Failed</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== ANALYTICS FEED ===================== -->
+  <aside class="feed" aria-label="Analytics feed">
+    <div class="feed__section">
+      <h2 class="feed__title">Live activity</h2>
+      <ul class="feed__list">
+        <li class="feed__item">
+          <span class="dot dot--good" aria-hidden="true"></span>
+          <div>
+            <p class="feed__text">Payout batch #4471 completed</p>
+            <p class="feed__time">2 min ago</p>
+          </div>
+        </li>
+        <li class="feed__item">
+          <span class="dot dot--warn" aria-hidden="true"></span>
+          <div>
+            <p class="feed__text">API latency spike in ap-south-1</p>
+            <p class="feed__time">14 min ago</p>
+          </div>
+        </li>
+        <li class="feed__item">
+          <span class="dot dot--good" aria-hidden="true"></span>
+          <div>
+            <p class="feed__text">New enterprise signup: Lumen Retail</p>
+            <p class="feed__time">41 min ago</p>
+          </div>
+        </li>
+        <li class="feed__item">
+          <span class="dot dot--bad" aria-hidden="true"></span>
+          <div>
+            <p class="feed__text">3 failed transactions on card gateway</p>
+            <p class="feed__time">1 hr ago</p>
+          </div>
+        </li>
+        <li class="feed__item">
+          <span class="dot dot--good" aria-hidden="true"></span>
+          <div>
+            <p class="feed__text">Weekly backup verified, 0 errors</p>
+            <p class="feed__time">3 hr ago</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="feed__section">
+      <h2 class="feed__title">Traffic by channel</h2>
+      <ul class="bars" aria-hidden="false">
+        <li class="bars__row">
+          <span class="bars__label">Direct</span>
+          <span class="bars__track"><span class="bars__fill" style="width:72%"></span></span>
+          <span class="bars__value mono">72%</span>
+        </li>
+        <li class="bars__row">
+          <span class="bars__label">Organic search</span>
+          <span class="bars__track"><span class="bars__fill" style="width:54%"></span></span>
+          <span class="bars__value mono">54%</span>
+        </li>
+        <li class="bars__row">
+          <span class="bars__label">Referral</span>
+          <span class="bars__track"><span class="bars__fill" style="width:31%"></span></span>
+          <span class="bars__value mono">31%</span>
+        </li>
+        <li class="bars__row">
+          <span class="bars__label">Email</span>
+          <span class="bars__track"><span class="bars__fill" style="width:18%"></span></span>
+          <span class="bars__value mono">18%</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="feed__section">
+      <h2 class="feed__title">Queue depth</h2>
+      <div class="queue-stat">
+        <span class="queue-stat__value mono">126</span>
+        <span class="queue-stat__label">jobs waiting, avg wait 4.1s</span>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
